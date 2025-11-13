@@ -6,7 +6,7 @@ import json
 # Mapping of GitHub event types to human-readable descriptions
 EVENT_MAP = {
     "CommitCommentEvent": "Commented on a commit in",
-    "CreateEvent": "Created a branch, tag, or repository in",
+    "CreateEvent": "Created a branch/tag/repo in",
     "DeleteEvent": "Deleted a branch or tag in",
     "DiscussionEvent": "Participated in a discussion in",
     "ForkEvent": "Forked",
@@ -47,7 +47,7 @@ def get_events(username):
                 created_at = event.get('created_at', 'N/A')
                 if len(created_at) > 3:
                     created_at = created_at[:10]
-                print(f"{action} {repo_name} at {created_at}")
+                print(f"- {action} {repo_name} at {created_at}")
     except urllib.error.HTTPError as e:
         print(f"Error fetching data: {e}")
 
